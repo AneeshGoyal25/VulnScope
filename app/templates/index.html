@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulnScope</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+    <div class="container mt-5">
+
+        <div class="text-center mb-5">
+
+            <h1 class="display-3 fw-bold">
+                🛡️ VulnScope
+            </h1>
+
+            <p class="lead">
+                Website Security Assessment Platform
+            </p>
+
+        </div>
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <form action="/" method="POST">
+
+                    <label class="form-label fw-bold">
+                        Website URL
+                    </label>
+
+                    <input
+                        type="text"
+                        name="url"
+                        class="form-control"
+                        placeholder="https://example.com"
+                        required>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100 mt-3">
+
+                        🔍 Scan Website
+
+                    </button>
+
+                </form>
+
+                {% if result %}
+
+                <hr>
+
+                <h3 class="mb-3">Scan Result</h3>
+
+                {% if result.status == "success" %}
+
+                <div class="alert alert-success">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <strong>Status Code:</strong><br>
+                            {{ result.status_code }}
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>Response Time:</strong><br>
+                            {{ result.response_time }} seconds
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% else %}
+
+                <div class="alert alert-danger">
+
+                    <h5>❌ Website could not be reached.</h5>
+
+                    <p class="mb-0">
+                        Please check the URL and try again.
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
